@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("flutter project"),
         ),
-        body: Text("안녕하세요"),
+        body: Text("안녕하세요....."),
       ),
     );
   }
