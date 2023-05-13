@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'HomeScreen.dart';
+import 'MapScreen.dart';
+import 'MoreScreen.dart';
+import 'MyScreen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -79,42 +84,9 @@ class MainView extends State<MyApp> {
   }
 }
 
-// 홈 화면 - Home Screen
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 1'),
-    );
-  }
-}
 
-// 가맹점 찾기 - Map Screen
-class MapScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Map Screen'),
-    );
-  }
-}
 
-// 내 정보 - My Screen
-class MyScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('My Screen'),
-    );
-  }
-}
 
-// 더 보기 - More Screen
-class MoreScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('More Screen'),
-    );
-  }
-}
+
+
+
