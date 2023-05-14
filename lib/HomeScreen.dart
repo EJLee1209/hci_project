@@ -1,4 +1,5 @@
 import 'package:app/PayScreen.dart';
+import 'package:app/PurchaseScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -72,7 +73,13 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: TextButton(
-                                    onPressed: (){},
+                                    onPressed: (){
+                                      // 제로페이 화면으로 이동
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => PayScreen())
+                                      );
+                                    },
                                     child: Text(
                                       "결제",
                                       style: TextStyle(
@@ -84,7 +91,12 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextButton(
-                                    onPressed: (){},
+                                    onPressed: (){
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => PurchaseScreen())
+                                      );
+                                    },
                                     child: Text(
                                       "충전",
                                       style: TextStyle(

@@ -69,6 +69,7 @@ flutter:
     - images/zero_pay.png
     - images/bell.png
     - images/img_qr.png
+    - images/k1_giftcard.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
