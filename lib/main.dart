@@ -37,7 +37,7 @@ class MainView extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: _pages[_selectedIndex],
+          child: _pages[_selectedIndex]
         ),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
