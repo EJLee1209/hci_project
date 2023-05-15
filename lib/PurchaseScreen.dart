@@ -1,3 +1,4 @@
+import 'package:app/GiftCardPurchaseScreen.dart';
 import 'package:app/model/GiftCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -145,8 +146,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
             // 전체 상품권 리스트
             Visibility(
               visible: _isAllGiftCardActivate,
-              child: SizedBox(
-                  height: 200,
+              child: Expanded(
                   child: ListView.builder(
                       padding: EdgeInsets.all(0),
                       itemCount: giftCards.length,
@@ -250,7 +250,10 @@ class _GiftCardItemsState extends State<GiftCardItems> {
                 ),
                 onPressed: () {
                   // 상품권 구매 클릭
-
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GiftCardPurchaseScreen())
+                  );
                 },
                 child: Text(
                   "구매",
