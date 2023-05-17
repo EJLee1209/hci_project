@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'model/Place.dart';
+
 // 가맹점 찾기 Screen
 class FindScreen extends StatefulWidget {
   const FindScreen({Key? key}) : super(key: key);
@@ -13,18 +15,20 @@ class FindScreen extends StatefulWidget {
 
 class _FindScreenState extends State<FindScreen> {
   List<String> tabTitles = ['전체', '학원/교육', '음식점/카페', '의료/보건', '농산물/청과', '수산물/횟집', '축산물/정육', '미용/패션', '식료품/반찬'];
+  List<Place> places = Place.getDummyData();
   int _selected = 0;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // AppBar
         Container(
           padding: EdgeInsets.fromLTRB(20, 70, 10, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "가맹점찾기",
                 style: TextStyle(
                     color: Colors.black,
@@ -40,7 +44,7 @@ class _FindScreenState extends State<FindScreen> {
                         MaterialPageRoute(builder: (context) => MapScreen())
                     );
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.location_on_outlined,
                     size: 30,
                   )
@@ -48,10 +52,11 @@ class _FindScreenState extends State<FindScreen> {
             ],
           ),
         ),
-        Divider(thickness: 1.5),
-
+        // Divier
+        const Divider(thickness: 1.5),
+        // 현재 위치, 매장 검색
         Container(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           height: 40,
           child: Row(
             children: const [
@@ -88,7 +93,6 @@ class _FindScreenState extends State<FindScreen> {
             ],
           ),
         ),
-
         // tab view
         Container(
           height: 120,
@@ -137,8 +141,94 @@ class _FindScreenState extends State<FindScreen> {
           },
             itemCount: tabTitles.length,
             scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.zero,
           ),
         ),
+        // 정렬 기준
+        Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.all(20),
+            child: Row(
+              children: const [
+                Text(
+                  "거리순",
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                Icon(Icons.keyboard_arrow_down)
+              ],
+            )
+        ),
+        // 가맹점 리스트
+
+        Expanded(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: CupertinoButton(
+                minSize: 0.0,
+                  padding: EdgeInsets.all(0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                "${places[index].title}",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.black
+                              ),
+                            ),
+                            Text(
+                                "${places[index].subTitle}",
+                              style: const TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.grey
+                              ),
+                            ),
+                            Text(
+                                "${places[index].description}",
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            const Icon(
+                                Icons.directions,
+                              size: 50,
+                            ),
+                            Text("${places[index].distance}")
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  onPressed: (){
+                    // 가맹점 클릭 이벤트
+
+                  },
+              ),
+            );
+          },
+            itemCount: places.length,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+          ),
+        )
+
       ],
     );
   }
