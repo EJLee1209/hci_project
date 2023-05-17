@@ -159,9 +159,6 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                   )
               ),
             ),
-
-
-            // 전체 상품권
           ],
         ),
       ),

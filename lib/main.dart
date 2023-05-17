@@ -1,3 +1,4 @@
+import 'package:app/FindScreen.dart';
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'MapScreen.dart';
@@ -21,7 +22,7 @@ class MainView extends State<MyApp> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
-    MapScreen(),
+    FindScreen(),
     MyScreen(),
     MoreScreen(),
   ];
