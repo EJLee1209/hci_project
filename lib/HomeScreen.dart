@@ -4,10 +4,14 @@ import 'package:app/PurchaseScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:developer';
 
 // 홈 화면 - Home Screen
 class HomeScreen extends StatelessWidget {
+
+  String kangwonSiteUrl = "https://gwgc.gwd.go.kr/site/intro/about.do";
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -200,7 +204,11 @@ class HomeScreen extends StatelessWidget {
                                         )
                                       ],
                                     ),
-                                    onPressed: (){}
+                                    onPressed: (){
+                                      // 선물/쿠폰 버튼 클릭
+
+
+                                    }
                                 ),
                               ),
                             ),
@@ -241,7 +249,13 @@ class HomeScreen extends StatelessWidget {
                                         )
                                       ],
                                     ),
-                                    onPressed: (){}
+                                    onPressed: () async {
+                                      // 서비스 소개 버튼 클릭
+                                      Uri url = Uri.parse(kangwonSiteUrl);
+                                      if (await canLaunchUrl(url)) {
+                                        launchUrl(url, mode: LaunchMode.externalApplication);
+                                      }
+                                    }
                                 ),
                               ),
                             ),
