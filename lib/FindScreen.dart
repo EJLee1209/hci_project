@@ -92,7 +92,7 @@ class _FindScreenState extends State<FindScreen> {
         // tab view
         Container(
           height: 120,
-          color: Color(0xFF9BA4B5),
+          color: Color(0xFFEEEEEE),
           child: ListView.builder(itemBuilder: (context, index) {
             return CupertinoButton(
               padding: EdgeInsets.all(0),
@@ -105,7 +105,7 @@ class _FindScreenState extends State<FindScreen> {
                       Container(
                         child: Icon(
                             Icons.all_inclusive,
-                            color: Color(0xFF171559)
+                            color: _selected==index ? Colors.white : Color(0xFF171559)
                         ),
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
@@ -115,7 +115,7 @@ class _FindScreenState extends State<FindScreen> {
                             ),
                             borderRadius: BorderRadius.circular(12),
 
-                            color: _selected==index ? Colors.white : Color(0xFF9BA4B5)
+                            color: _selected==index ? Color(0xFF171559) : Color(0xFFEEEEEE)
                         ),
                       ),
                       Text(
