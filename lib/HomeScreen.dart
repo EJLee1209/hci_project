@@ -1,3 +1,4 @@
+import 'package:app/HistoryScreen.dart';
 import 'package:app/NotifyScreen.dart';
 import 'package:app/PayScreen.dart';
 import 'package:app/PurchaseScreen.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:developer';
 
 // 홈 화면 - Home Screen
 class HomeScreen extends StatelessWidget {
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                               Expanded(
                                 child: TextButton(
                                     onPressed: (){
-                                      // 상품권 결제 화면으로 이동
+                                      // Navigate to PayScreen
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => PayScreen(PayType.giftCardPay))
@@ -103,6 +103,7 @@ class HomeScreen extends StatelessWidget {
                               Expanded(
                                 child: TextButton(
                                     onPressed: (){
+                                      // Navigate to PurchaseScreen
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => PurchaseScreen())
@@ -119,7 +120,13 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: TextButton(
-                                    onPressed: (){},
+                                    onPressed: (){
+                                      // Navigate to HistoryScreen
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HistoryScreen())
+                                      );
+                                    },
                                     child: Text(
                                       "내역",
                                       style: TextStyle(
@@ -263,7 +270,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     // 슬라이드 배너 이미지
                     ImageSlider()
                   ],
