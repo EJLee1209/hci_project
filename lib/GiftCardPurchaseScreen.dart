@@ -1,3 +1,4 @@
+import 'package:app/PayScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -239,7 +240,12 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
                 padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
                 color: Colors.blue,
                   child: Text("구매하기"),
-                  onPressed: (){}
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PayScreen(false))
+                    );
+                  }
               )
             ],
           ),

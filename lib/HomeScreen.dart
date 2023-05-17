@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                                       // 제로페이 화면으로 이동
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => PayScreen())
+                                          MaterialPageRoute(builder: (context) => PayScreen(true))
                                       );
                                     },
                                     child: Text(
@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                                 // 제로페이 화면으로 이동
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => PayScreen())
+                                    MaterialPageRoute(builder: (context) => PayScreen(true))
                                 );
                               },
                               icon: Image.asset(
