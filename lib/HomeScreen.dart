@@ -74,10 +74,10 @@ class HomeScreen extends StatelessWidget {
                               Expanded(
                                 child: TextButton(
                                     onPressed: (){
-                                      // 제로페이 화면으로 이동
+                                      // 상품권 결제 화면으로 이동
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => PayScreen(true))
+                                          MaterialPageRoute(builder: (context) => PayScreen(PayType.giftCardPay))
                                       );
                                     },
                                     child: Text(
@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                                 // 제로페이 화면으로 이동
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => PayScreen(true))
+                                    MaterialPageRoute(builder: (context) => PayScreen(PayType.zeroPay))
                                 );
                               },
                               icon: Image.asset(

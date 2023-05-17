@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:async';
 
+enum PayType {
+  zeroPay, // 제로페이
+  giftCardPay, // 상품권 결제
+  giftCardPurchase  // 상품권 구매
+}
+
 
 class PayScreen extends StatefulWidget {
-  bool isZeroPay = false;
+  // 결제 종류 구분을 위한 변수 (제로페이, 상품권 결제/구매)
+  // 변수 타입은 PayType 열거형 사용
+  PayType payType = PayType.zeroPay;
 
-  PayScreen(bool isZeroPay) {
-    this.isZeroPay = isZeroPay;
+  // 생성자 파라미터로 받음
+  PayScreen(PayType payType) {
+    this.payType = payType;
   }
-
 
   @override
   State<PayScreen> createState() => _PayScreenState();
@@ -21,6 +29,23 @@ class _PayScreenState extends State<PayScreen> {
   bool _passwordOk = false;
   int _remainTime = 180;
   late Timer _timer;
+  String _title = "";
+
+  @override
+  void initState() {
+    super.initState();
+    switch(widget.payType) {
+      case PayType.zeroPay:
+        _title = "제로페이 결제";
+        break;
+      case PayType.giftCardPay:
+        _title = "상품권 결제";
+        break;
+      case PayType.giftCardPurchase:
+        _title = "상품권 구매";
+        break;
+    }
+  }
 
   @override
   void dispose() {
@@ -31,7 +56,7 @@ class _PayScreenState extends State<PayScreen> {
   @override
   Widget build(BuildContext context) {
     if(_passwordOk) { // 결제 비밀번호 통과
-      if (widget.isZeroPay){
+      if (widget.payType == PayType.zeroPay){
         // 제로페이
         return MaterialApp(
           home: Scaffold(
@@ -132,7 +157,7 @@ class _PayScreenState extends State<PayScreen> {
             ),
           ),
         );
-      } else {
+      } else if(widget.payType == PayType.giftCardPurchase) {
         // 상품권 구매
         return MaterialApp(
           home: Scaffold(
@@ -214,9 +239,139 @@ class _PayScreenState extends State<PayScreen> {
             ),
           ),
         );
+      } else {
+        // 상품권 결제
+        return MaterialApp(
+          home: Scaffold(
+            backgroundColor: Colors.white,
+            body: Column(
+              children: [
+                Container(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.fromLTRB(0, 70, 20, 0),
+                    child: Row(
+                      children: [
+                        IconButton(
+                            onPressed: (){
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.arrow_back_ios_new)
+                        ),
+                        Text(
+                          "상품권 결제",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18
+                          ),
+                        ),
+                      ],
+                    )
+                ),
+
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                          "상품권 사용 가능 금액 : ",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "73,000원",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+                const Divider(
+                  thickness: 1.5,
+                ),
+
+                Container(
+                  margin: EdgeInsets.fromLTRB(18, 50, 18, 12),
+                  child: Text(
+                    "생성된 QR코드를 점원에게 보여주세요",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "남은시간 : ${_remainTime~/60}:${_remainTime%60}",
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: (){},
+                        icon: Icon(
+                          Icons.rotate_left,
+                          color: Colors.blue,
+                        )
+                    )
+                  ],
+                ),
+
+                Image.asset(
+                  "images/img_qr.png",
+                  width: 200,
+                  height: 200,
+                ),
+                const Spacer(),
+
+                CupertinoButton(
+                    padding: EdgeInsets.all(0),
+                    child: Container(
+                      color: Colors.grey,
+                      width: double.infinity,
+                      padding: EdgeInsets.all(18),
+                      child: Column(
+                        children: const [
+                          Icon(
+                            Icons.camera_alt,
+                            size: 36,
+                            color: Colors.black,
+                          ),
+                          Text(
+                            "가맹점 QR코드를 스캔하려면\n여기를 터치하세요",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    ),
+                    onPressed: () {
+
+                    }
+
+                )
+              ],
+            ),
+          ),
+        );
       }
 
     }else {
+      // 결제 비밀번호 확인 화면
       return MaterialApp(
           home: Scaffold(
             backgroundColor: Colors.white,
@@ -234,7 +389,7 @@ class _PayScreenState extends State<PayScreen> {
                             icon: Icon(Icons.arrow_back_ios_new)
                         ),
                         Text(
-                          "제로페이 결제",
+                          _title,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,

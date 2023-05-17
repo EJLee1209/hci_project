@@ -243,7 +243,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
                   onPressed: (){
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PayScreen(false))
+                        MaterialPageRoute(builder: (context) => PayScreen(PayType.giftCardPurchase))
                     );
                   }
               )
