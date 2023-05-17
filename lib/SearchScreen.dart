@@ -13,7 +13,11 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   String _searchKeyword = ""; // 검색어 입력
-  List<String> _recentSearch = []; // 최근 검색 기록
+  List<String> _recentSearch = [
+    "빽다방",
+    "한림대학교",
+    "춘천"
+  ]; // 최근 검색 기록
   List<Place> places = Place.getDummyData(); // 가맹점 리스트
   List<Place> _placesFromKeyword = []; // 검색 결과
   var txt = TextEditingController(); // TextField Controller

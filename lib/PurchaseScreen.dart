@@ -16,12 +16,13 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
   bool _isFavoriteActivate = false;
   bool _isAllGiftCardActivate = false;
   List<GiftCard> giftCards = <GiftCard>[
-    GiftCard("images/k1_giftcard.png", "강원상품권", "강원지역 경제 활성화를 위한 모바일 강원상품권"),
-    GiftCard("images/k1_giftcard.png", "춘천사랑상품권", "춘천 경제 활성화를 위한 모바일 춘천상품권"),
-    GiftCard("images/k1_giftcard.png", "한우 사랑 상품권", "한우를 사랑하는 사람을 위한 모바일 상품권"),
-    GiftCard("images/k1_giftcard.png", "---", "~~~"),
-    GiftCard("images/k1_giftcard.png", "---", "~~~"),
+    GiftCard("images/k1_giftcard.png", "강원상품권", "강원지역 경제 활성화를 위한 모바일 강원상품권", true),
+    GiftCard("images/k1_giftcard.png", "춘천사랑상품권", "춘천 경제 활성화를 위한 모바일 춘천상품권", true),
+    GiftCard("images/k1_giftcard.png", "한우 사랑 상품권", "한우를 사랑하는 사람을 위한 모바일 상품권", false),
+    GiftCard("images/k1_giftcard.png", "---", "~~~", false),
+    GiftCard("images/k1_giftcard.png", "---", "~~~", false),
   ];
+  List<GiftCard> favorites = [];
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +90,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
               thickness: 1,
             ),
 
+
             // 즐겨찾기 리스트
             Visibility(
                 visible: _isFavoriteActivate,
@@ -98,10 +100,20 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                     padding: EdgeInsets.all(0),
                     itemCount: giftCards.length,
                       itemBuilder: (BuildContext context, int index){
-                        return Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                          child: GiftCardItems(giftCards[index])
-                        );
+                        if(giftCards[index].isFavorite) { // 즐찾 되어있는 것만 가져올거임
+                          return Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                              child: GiftCardItems(
+                                giftCards[index],
+                                    (card) {
+                                  // 즐찾 아이콘 클릭이벤트
+                                  setState(() {
+                                    giftCards[index].isFavorite = !giftCards[index].isFavorite;
+                                  });
+                                },
+                              )
+                          );
+                        }
                       }
                   )
                 ),
@@ -153,7 +165,15 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                       itemBuilder: (BuildContext context, int index){
                         return Container(
                             padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
-                            child: GiftCardItems(giftCards[index])
+                            child: GiftCardItems(
+                              giftCards[index],
+                              (card) {
+                                // 즐찾 아이콘 클릭이벤트
+                                setState(() {
+                                  giftCards[index].isFavorite = !giftCards[index].isFavorite;
+                                });
+                              },
+                            )
                         );
                       }
                   )
@@ -168,9 +188,11 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
 
 class GiftCardItems extends StatefulWidget {
   late GiftCard card;
+  late Function(GiftCard card) tappedStar = (GiftCard card) {};
 
-  GiftCardItems(GiftCard card) {
+  GiftCardItems(GiftCard card, Function(GiftCard) tappedStar) {
     this.card = card;
+    this.tappedStar = tappedStar;
   }
 
   @override
@@ -198,13 +220,19 @@ class _GiftCardItemsState extends State<GiftCardItems> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GestureDetector(
-            onTap: (){
-              this.widget.card.isFavorite = !this.widget.card.isFavorite;
-            },
-            child: Icon(
-              this.widget.card.isFavorite ? Icons.star : Icons.star_border,
-              size: 20,
+          Container(
+            padding: EdgeInsets.all(10),
+            child: GestureDetector(
+              onTap: (){
+                widget.tappedStar(this.widget.card);
+                // setState(() {
+                //   this.widget.card.isFavorite = !this.widget.card.isFavorite;
+                // });
+              },
+              child: Icon(
+                this.widget.card.isFavorite ? Icons.star : Icons.star_border,
+                size: 20,
+              ),
             ),
           ),
           Image.asset(

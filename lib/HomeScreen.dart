@@ -1,3 +1,4 @@
+import 'package:app/NotifyScreen.dart';
 import 'package:app/PayScreen.dart';
 import 'package:app/PurchaseScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +17,13 @@ class HomeScreen extends StatelessWidget {
           alignment: Alignment.topRight,
           padding: EdgeInsets.fromLTRB(0, 70, 20, 0),
           child: IconButton(
-            onPressed: (){},
+            onPressed: (){
+              // Navigate to NotifyScreen
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotifyScreen())
+              );
+            },
             icon: Image.asset(
               "images/bell.png",
               width: 35,
