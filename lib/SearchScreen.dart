@@ -12,11 +12,11 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  String _searchKeyword = "";
-  List<String> _recentSearch = [];
-  List<Place> places = Place.getDummyData();
-  List<Place> _placesFromKeyword = [];
-  var txt = TextEditingController();
+  String _searchKeyword = ""; // 검색어 입력
+  List<String> _recentSearch = []; // 최근 검색 기록
+  List<Place> places = Place.getDummyData(); // 가맹점 리스트
+  List<Place> _placesFromKeyword = []; // 검색 결과
+  var txt = TextEditingController(); // TextField Controller
 
   @override
   Widget build(BuildContext context) {
