@@ -78,14 +78,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_naver_map:
-    dependency: "direct main"
-    description:
-      name: flutter_naver_map
-      sha256: "3dc21443af5487aaca1e2fecb6d825cc3b513fa199ccc7704e1238f0d59f10ae"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.10.7"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -144,6 +136,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  naver_map_plugin:
+    dependency: "direct main"
+    description:
+      name: naver_map_plugin
+      sha256: fb5443bec21585a82a3bc88f6bb53561672a3178a5cdd2ea772c35c8b80b35a6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.6"
   path:
     dependency: transitive
     description:
@@ -249,10 +249,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_android
-      sha256: "7aac14be5f4731b923cc697ae2d42043945076cd0dbb8806baecc92c1dc88891"
+      sha256: "1a5848f598acc5b7d8f7c18b8cb834ab667e59a13edc3c93e9d09cf38cc6bc87"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.33"
+    version: "6.0.34"
   url_launcher_ios:
     dependency: transitive
     description:

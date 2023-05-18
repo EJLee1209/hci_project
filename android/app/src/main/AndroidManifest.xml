@@ -55,5 +55,10 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+<!--   naver map client ID-->
+       <meta-data
+           android:name="com.naver.maps.map.CLIENT_ID"
+           android:value="35p5dw2pu3" />
     </application>
 </manifest>

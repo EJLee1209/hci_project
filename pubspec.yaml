@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_naver_map: ^0.10.0
+  naver_map_plugin: ^0.9.6
   url_launcher: ^6.1.11
 
   # The following adds the Cupertino Icons font to your application.
