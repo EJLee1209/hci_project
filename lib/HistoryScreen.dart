@@ -123,10 +123,94 @@ class HistoryScreen extends StatelessWidget {
             ),
 
             Divider(thickness: 3,),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: const [
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                  DummyHistoryItem(),
+                ],
+              ),
+            )
 
           ],
         ),
       ),
+    );
+  }
+}
+
+class DummyHistoryItem extends StatelessWidget {
+  const DummyHistoryItem({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Text(
+                "05.12",
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 0, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "강원상품권",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    Text(
+                      "빽다방",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Spacer(),
+              Column(
+                children: [
+                  Text(
+                    "-3,000원",
+                    style: TextStyle(
+                        fontSize: 14
+                    ),
+                  ),
+                  Text(
+                    "27,000원",
+                    style: TextStyle(
+                        fontSize: 16
+                    ),
+                  ),
+                ],
+              ),
+
+            ],
+          ),
+        ),
+        Divider(
+          thickness: 1,
+        )
+      ],
     );
   }
 }
