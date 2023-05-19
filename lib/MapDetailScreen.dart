@@ -6,55 +6,573 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
 
-class MapDetailScreen extends StatelessWidget {
+class MapDetailScreen extends StatefulWidget {
+  @override
+  State<MapDetailScreen> createState() => _MapDetailScreenState();
+}
+
+class _MapDetailScreenState extends State<MapDetailScreen> {
+  int _selected = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(
-            "김밥 천국",
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 18
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Text(
+              "김밥 천국",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+              ),
             ),
-          ),
-          leading: IconButton(
-              onPressed: (){
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.black,
-              )
-          ),
-          actions: [
-            IconButton(
+            leading: IconButton(
                 onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SearchScreen())
-                  );
+                  Navigator.pop(context);
                 },
                 icon: Icon(
-                  Icons.manage_search_outlined,
+                  Icons.arrow_back_ios_new,
                   color: Colors.black,
-                  size: 30,
                 )
             ),
-          ],
-        ),
-        body: MapView(),
-        bottomNavigationBar: BottomAppBar(
-          height: 200,
-          child: PlaceNavigationBar(),
-        )
+            actions: [
+              IconButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen())
+                    );
+                  },
+                  icon: Icon(
+                    Icons.manage_search_outlined,
+                    color: Colors.black,
+                    size: 30,
+                  )
+              ),
+            ],
+          ),
+          body: Stack(
+            children: [
+              // 최단경로
+              MapView(),
+
+              // 대중교통 리스트
+              Visibility(
+                visible: _selected == 1,
+                child: Container(
+                  color: Colors.white,
+                  child: Expanded(
+                    child: ListView(
+                      padding: EdgeInsets.all(10),
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "오늘 오후 2:44 출발",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 8, 8, 30),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "26분",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "오후 2:44 ~ 3:11",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          Text(
+                                            "도보 10분 | 카드 1,500원 | 대기 15분 예상",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_bus_outlined,
+                                      color: Colors.blue,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "한림대학교",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        Text(
+                                          "3-S, 300",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                        Text(
+                                          "성심경로당 정류장",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Divider(
+                                thickness: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "오늘 오후 2:44 출발",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 8, 8, 30),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "26분",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "오후 2:44 ~ 3:11",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          Text(
+                                            "도보 10분 | 카드 1,500원 | 대기 15분 예상",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_bus_outlined,
+                                      color: Colors.blue,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "한림대학교",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        Text(
+                                          "3-S, 300",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                        Text(
+                                          "성심경로당 정류장",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Divider(
+                                thickness: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "오늘 오후 2:44 출발",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 8, 8, 30),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "26분",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "오후 2:44 ~ 3:11",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          Text(
+                                            "도보 10분 | 카드 1,500원 | 대기 15분 예상",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_bus_outlined,
+                                      color: Colors.blue,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "한림대학교",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        Text(
+                                          "3-S, 300",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                        Text(
+                                          "성심경로당 정류장",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Divider(
+                                thickness: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "오늘 오후 2:44 출발",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 8, 8, 30),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "26분",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "오후 2:44 ~ 3:11",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          Text(
+                                            "도보 10분 | 카드 1,500원 | 대기 15분 예상",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_bus_outlined,
+                                      color: Colors.blue,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "한림대학교",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        Text(
+                                          "3-S, 300",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                        Text(
+                                          "성심경로당 정류장",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Divider(
+                                thickness: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "오늘 오후 2:44 출발",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 8, 8, 30),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      "26분",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "오후 2:44 ~ 3:11",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                          Text(
+                                            "도보 10분 | 카드 1,500원 | 대기 15분 예상",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_bus_outlined,
+                                      color: Colors.blue,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "한림대학교",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                        Text(
+                                          "3-S, 300",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                        Text(
+                                          "성심경로당 정류장",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black87
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              Divider(
+                                thickness: 1.5,
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              )
+            ],
+          ),
+          bottomNavigationBar: BottomAppBar(
+            height: 200,
+            child: PlaceNavigationBar(),
+          )
       ),
     );
   }
 }
+
 
 class MapView extends StatefulWidget {
   const MapView({Key? key}) : super(key: key);
@@ -91,10 +609,12 @@ class PlaceNavigationBar extends StatefulWidget {
 
 class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
   bool _showNavigation = false;
-  int _selected = 0;
+  int _selectedTransportation = 0;
 
   @override
   Widget build(BuildContext context) {
+    _MapDetailScreenState? parent = context.findAncestorStateOfType<_MapDetailScreenState>();
+
     if(_showNavigation) {
       return Padding(
         padding: const EdgeInsets.all(12.0),
@@ -153,16 +673,123 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                     ),
                   ],
                 ),
-              visible: _selected==0,
+              visible: parent?._selected == 0,
             ),
 
             // 대중교통
             Visibility(
-                child: Row(
-                  children: [
-
-                  ],
+                child: SizedBox(
+                  height: 50,
+                  child: ListView(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Expanded(
+                            child: CupertinoButton(
+                              color: _selectedTransportation == 0 ? Color(0xFF171559) : Colors.white,
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              minSize: 0.0,
+                              child: Text(
+                                "전체",
+                                style: TextStyle(
+                                    color: _selectedTransportation == 0 ? Colors.white : Color(0xFF171559),
+                                    fontSize: 18
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _selectedTransportation = 0;
+                                });
+                              },
+                            )
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Expanded(
+                            child: CupertinoButton(
+                              color: _selectedTransportation == 1 ? Color(0xFF171559) : Colors.white,
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              minSize: 0.0,
+                              child: Text(
+                                "버스",
+                                style: TextStyle(
+                                    color: _selectedTransportation == 1 ? Colors.white : Color(0xFF171559),
+                                    fontSize: 18
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _selectedTransportation = 1;
+                                });
+                              },
+                            )
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Expanded(
+                            child: CupertinoButton(
+                              color: _selectedTransportation == 2 ? Color(0xFF171559) : Colors.white,
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              minSize: 0.0,
+                              child: Text(
+                                "지하철",
+                                style: TextStyle(
+                                    color: _selectedTransportation == 2 ? Colors.white : Color(0xFF171559),
+                                    fontSize: 18
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _selectedTransportation = 2;
+                                });
+                              },
+                            )
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Expanded(
+                            child: CupertinoButton(
+                              color: _selectedTransportation == 3 ? Color(0xFF171559) : Colors.white,
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              minSize: 0.0,
+                              child: Text(
+                                "버스+지하철",
+                                style: TextStyle(
+                                    color: _selectedTransportation == 3 ? Colors.white : Color(0xFF171559),
+                                    fontSize: 18
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _selectedTransportation = 3;
+                                });
+                              },
+                            )
+                        ),
+                      ),
+                    ],
+                    scrollDirection: Axis.horizontal,
+                  ),
                 ),
+              visible: parent?._selected == 1,
             ),
             // 자차
             Visibility(
@@ -203,7 +830,7 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                   ),
                 ],
               ),
-              visible: _selected==2,
+              visible: parent?._selected==2,
             ),
             // 아래 3개 버튼
             Expanded(
@@ -224,15 +851,15 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                         minSize: 0.0,
                         child: Icon(
                           Icons.run_circle_outlined,
-                          color: _selected == 0 ? Colors.white : Color(0xFF171559),
+                          color: parent?._selected == 0 ? Colors.white : Color(0xFF171559),
                           size: 40,
                         ),
                         onPressed: (){
-                          setState(() {
-                            _selected = 0;
+                          parent?.setState(() {
+                            parent._selected = 0;
                           });
                         },
-                        color: _selected == 0 ? Color(0xFF171559) : Colors.white,
+                        color: parent?._selected == 0 ? Color(0xFF171559) : Colors.white,
                       ),
                     ),
                   ),
@@ -250,15 +877,15 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                         minSize: 0.0,
                         child: Icon(
                           Icons.directions_bus_outlined,
-                          color: _selected == 1 ? Colors.white : Color(0xFF171559),
+                          color: parent?._selected == 1 ? Colors.white : Color(0xFF171559),
                           size: 40,
                         ),
                         onPressed: (){
-                          setState(() {
-                            _selected = 1;
+                          parent?.setState(() {
+                            parent._selected = 1;
                           });
                         },
-                        color: _selected == 1 ? Color(0xFF171559) : Colors.white,
+                        color: parent?._selected == 1 ? Color(0xFF171559) : Colors.white,
                       ),
                     ),
                   ),
@@ -276,15 +903,15 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                         minSize: 0.0,
                         child: Icon(
                           Icons.directions_car_outlined,
-                          color: _selected == 2 ? Colors.white : Color(0xFF171559),
+                          color: parent?._selected == 2 ? Colors.white : Color(0xFF171559),
                           size: 40,
                         ),
                         onPressed: (){
-                          setState(() {
-                            _selected = 2;
+                          parent?.setState(() {
+                            parent._selected = 2;
                           });
                         },
-                        color: _selected == 2 ? Color(0xFF171559) : Colors.white,
+                        color: parent?._selected == 2 ? Color(0xFF171559) : Colors.white,
                       ),
                     ),
                   ),
