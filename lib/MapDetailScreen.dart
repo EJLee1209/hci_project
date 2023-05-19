@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app/PlaceDetailCreen.dart';
 import 'package:app/SearchScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -991,7 +992,10 @@ class _PlaceNavigationBarState extends State<PlaceNavigationBar> {
                     ),
                     onPressed: (){
                       // 가맹점 상세 정보화면으로 이동
-
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PlaceDetailScreen())
+                      );
                     }
                 ),
               ],
