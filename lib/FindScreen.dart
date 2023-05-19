@@ -1,3 +1,4 @@
+import 'package:app/MapDetailScreen.dart';
 import 'package:app/MapScreen.dart';
 import 'package:app/SearchScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -281,7 +282,10 @@ class _FindScreenState extends State<FindScreen> {
                   ),
                   onPressed: (){
                     // 가맹점 클릭 이벤트
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapDetailScreen())
+                    );
                   },
               ),
             );
