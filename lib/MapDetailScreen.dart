@@ -586,6 +586,13 @@ class _MapViewState extends State<MapView> {
   Completer<NaverMapController> _controller = Completer();
   MapType _mapType = MapType.Basic;
 
+  moveCamera() async {
+    final controller = await _controller.future;
+    controller.moveCamera(
+        CameraUpdate.toCameraPosition(CameraPosition(target: LatLng(37.8866303, 127.7353948)))
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -599,6 +606,7 @@ class _MapViewState extends State<MapView> {
   void onMapCreated(NaverMapController controller) {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
+    moveCamera();
   }
 }
 

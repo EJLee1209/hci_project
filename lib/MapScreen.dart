@@ -17,6 +17,19 @@ class _MapScreenState extends State<MapScreen> {
   Completer<NaverMapController> _controller = Completer();
   MapType _mapType = MapType.Basic;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    moveCamera();
+  }
+
+  moveCamera() async {
+    final controller = await _controller.future;
+    controller.moveCamera(
+        CameraUpdate.toCameraPosition(CameraPosition(target: LatLng(37.8866303, 127.7353948)))
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
