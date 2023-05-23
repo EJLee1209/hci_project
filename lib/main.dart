@@ -7,6 +7,8 @@ import 'MyScreen.dart';
 import 'Util/SalmonBottomBar.dart';
 
 
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -37,6 +39,7 @@ class MainView extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: Scaffold(
         body: Center(
           child: _pages[_selectedIndex]
