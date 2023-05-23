@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class HistoryScreen extends StatelessWidget {
                         icon: Icon(Icons.arrow_back_ios_new)
                     ),
                     Text(
-                      "내역",
+                      "History".tr,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class HistoryScreen extends StatelessWidget {
                         backgroundColor: Color(0xFF171559)
                       ),
                         onPressed: (){},
-                        child: Text("상품권")
+                        child: Text("GiftCard".tr)
                     ),
                   ),
                   ElevatedButton(
@@ -80,7 +81,7 @@ class HistoryScreen extends StatelessWidget {
                           backgroundColor: Color(0xFF171559)
                       ),
                       onPressed: (){},
-                      child: Text("제로페이")
+                      child: Text("ZeroPay".tr)
                   ),
                 ],
               ),
@@ -170,14 +171,14 @@ class DummyHistoryItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "강원상품권",
+                      "Gangwon GiftCard".tr,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold
                       ),
                     ),
                     Text(
-                      "빽다방",
+                      "Back Coffee Shop".tr,
                       style: TextStyle(
                         fontSize: 14,
                       ),

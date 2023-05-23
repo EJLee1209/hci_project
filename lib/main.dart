@@ -1,15 +1,23 @@
+import 'dart:math';
+
+
 import 'package:app/FindScreen.dart';
+import 'package:app/LocalString.dart';
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'MapScreen.dart';
 import 'MoreScreen.dart';
 import 'MyScreen.dart';
 import 'Util/SalmonBottomBar.dart';
+import 'package:get/get.dart';
+import 'LocalString.dart';
 
 
 
 
-void main() {
+void main()  {
+
+
   runApp(const MyApp());
 }
 
@@ -22,6 +30,8 @@ class MyApp extends StatefulWidget {
 }
 
 class MainView extends State<MyApp> {
+
+
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),
@@ -36,11 +46,17 @@ class MainView extends State<MyApp> {
     });
   }
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return GetMaterialApp(
+    translations: LocalString(),
+      locale: Locale('en','US'),
       home: Scaffold(
+
         body: Center(
           child: _pages[_selectedIndex]
         ),
@@ -55,7 +71,7 @@ class MainView extends State<MyApp> {
                   Icons.home_outlined,
                   size: 30,
                 ),
-                title: Text("홈"),
+                title: Text('Home'.tr),
                 selectedColor: Color(0xFF171559),
               ),
 
@@ -65,7 +81,7 @@ class MainView extends State<MyApp> {
                   Icons.location_on_outlined,
                   size: 30,
                 ),
-                title: Text("가맹점"),
+                title: Text("Franchisee".tr),
                 selectedColor: Color(0xFF171559),
               ),
 
@@ -75,7 +91,7 @@ class MainView extends State<MyApp> {
                   Icons.person_outline_sharp,
                   size: 30,
                 ),
-                title: Text("내 정보"),
+                title: Text("My Page".tr),
                 selectedColor: Color(0xFF171559),
               ),
 
@@ -85,7 +101,7 @@ class MainView extends State<MyApp> {
                   Icons.more_horiz_outlined,
                   size: 30,
                 ),
-                title: Text("더보기"),
+                title: Text("More".tr),
                 selectedColor: Color(0xFF171559),
               ),
             ],

@@ -3,6 +3,7 @@ import 'package:app/MyInfo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 
 
@@ -21,7 +22,12 @@ class _MyScreenState extends State<MyScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
+
+        body:Padding( 
+          padding: EdgeInsets.all(20),
+        
+        child: Column(
+
           children: [
             Container(
               alignment: Alignment.topLeft,
@@ -29,7 +35,7 @@ class _MyScreenState extends State<MyScreen> {
               child: Row(
                 children: [
                   Text(
-                    "  My Page",
+                    "My page".tr,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -48,7 +54,7 @@ class _MyScreenState extends State<MyScreen> {
                       Row(
                         children: [
                           Text(
-                            ' 내 정보',
+                            'My info'.tr,
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -84,7 +90,7 @@ class _MyScreenState extends State<MyScreen> {
                     children: [
                       Row(
                         children: [
-                          Text(' 내 계좌',
+                          Text('My account'.tr,
                               style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -116,7 +122,7 @@ class _MyScreenState extends State<MyScreen> {
                     children: [
                       Row(
                         children: [
-                          Text(' 고객센터',
+                          Text('Customer Service'.tr,
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -144,7 +150,7 @@ class _MyScreenState extends State<MyScreen> {
                     children: [
                       Row(
                         children: [
-                          Text(' 버전',
+                          Text('version'.tr,
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -165,16 +171,7 @@ class _MyScreenState extends State<MyScreen> {
               ],
             ),
 
-            Row(
-              children: [
-                Expanded(
-                child: IconButton(
-                  icon: Icon(Icons.language),
-                  onPressed: (){},
-                ),
-                ),
-              ],
-            ),
+
             Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: Column(
@@ -184,9 +181,9 @@ class _MyScreenState extends State<MyScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                        TextButton(onPressed: (){}, child: Text('로그아웃')),
+                        TextButton(onPressed: (){}, child: Text('Log out'.tr)),
                           Text(' | '),
-                          TextButton(onPressed: (){}, child: Text('회원 탈퇴'))
+                          TextButton(onPressed: (){}, child: Text('Cancel my Membership'.tr))
                         ],
                       ),
                     )
@@ -197,6 +194,7 @@ class _MyScreenState extends State<MyScreen> {
 
           ]
     ),
+        ),
     ),
     );
   }

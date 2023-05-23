@@ -1,6 +1,7 @@
 import 'package:app/PayScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'model/PurchaseCard.dart';
 
@@ -33,7 +34,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
                       icon: Icon(Icons.arrow_back_ios_new)
                   ),
                   Text(
-                    "강원상품권",
+                    "Gangwon GiftCard".tr,
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -46,7 +47,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
 
             // 월 잔여 할인 한도
             Text(
-                "월 잔여 할인 한도",
+                "Monthly Remaining Discount Limit".tr,
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
                     ),
                       onPressed: (){},
                       child: Text(
-                          "할인한도",
+                          "discount limit".tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 12
@@ -86,7 +87,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
                   ),
                     onPressed: (){},
                     child: Text(
-                        "한도확인",
+                        "discount limit".tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 12
@@ -239,7 +240,7 @@ class _GiftCardPurchaseScreenState extends State<GiftCardPurchaseScreen> {
               CupertinoButton(
                 padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
                 color: Colors.blue,
-                  child: Text("구매하기"),
+                  child: Text("Buying".tr),
                   onPressed: (){
                     Navigator.push(
                         context,

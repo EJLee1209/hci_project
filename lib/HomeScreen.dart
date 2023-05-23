@@ -5,10 +5,51 @@ import 'package:app/PurchaseScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'LocalString.dart';
 
 // 홈 화면 - Home Screen
 class HomeScreen extends StatelessWidget {
+  final List locale=[
+    {'name':'English','locale':Locale('en','US')},
+    {'name':'한국어','locale':Locale('ko','KR')}
+  ];
+
+  updatelanguage(Locale locale){
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+  builddialog(BuildContext context){
+    showDialog(context: context,
+        builder: (builder){
+          return AlertDialog(
+            title: Text('choose your language'),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                    return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:GestureDetector(
+                          onTap: (){
+                           updatelanguage(locale[index]['locale']);
+                          },
+
+                        child:Text(locale[index]['name'])),);
+                  },
+                  separatorBuilder: (context,index){
+                    return Divider(
+                      color: Colors.blue,
+                    );
+                  },
+                  itemCount: locale.length),
+            ),
+          );
+        });
+  }
 
   String kangwonSiteUrl = "https://gwgc.gwd.go.kr/site/intro/about.do";
 
@@ -18,23 +59,38 @@ class HomeScreen extends StatelessWidget {
       children: [
         // 알림 아이콘
         Container(
-          alignment: Alignment.topRight,
+
           padding: EdgeInsets.fromLTRB(0, 70, 20, 0),
-          child: IconButton(
-            onPressed: (){
-              // Navigate to NotifyScreen
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NotifyScreen())
-              );
-            },
-            icon: Image.asset(
-              "images/bell.png",
-              width: 35,
-              height: 35,
-            ),
-          )
+          child: Row(
+            children: [
+
+                IconButton(onPressed:
+              (){
+              builddialog(context);
+              },
+                    icon: Icon(Icons.language)
+              ),
+              Spacer(),
+              IconButton(
+                onPressed: (){
+                  // Navigate to NotifyScreen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotifyScreen()),
+                  );
+                },
+                icon: Image.asset(
+                  "images/bell.png",
+                  width: 35,
+                  height: 35,
+                ),
+              ),
+
+
+            ],
+          ),
         ),
+
 
         Expanded(
             child: Container(
@@ -92,7 +148,7 @@ class HomeScreen extends StatelessWidget {
                                       );
                                     },
                                     child: Text(
-                                      "결제",
+                                      "Pay".tr,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16
@@ -110,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                                       );
                                     },
                                     child: Text(
-                                      "충전",
+                                      "Charge".tr,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16
@@ -128,7 +184,7 @@ class HomeScreen extends StatelessWidget {
                                       );
                                     },
                                     child: Text(
-                                      "내역",
+                                      "History".tr,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16
@@ -203,7 +259,7 @@ class HomeScreen extends StatelessWidget {
                                           size: 45,
                                         ),
                                         Text(
-                                          "선물/쿠폰",
+                                          "Gift/Coupon".tr,
                                           style: TextStyle(
                                               color: Color(0xFF171559),
                                               fontSize: 13
@@ -248,7 +304,7 @@ class HomeScreen extends StatelessWidget {
                                           size: 45,
                                         ),
                                         Text(
-                                          "서비스 소개",
+                                          "Intro sercive".tr,
                                           style: TextStyle(
                                               color: Color(0xFF171559),
                                               fontSize: 13

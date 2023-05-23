@@ -1,6 +1,7 @@
 // 내 계좌 my accounts
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyAccout extends StatefulWidget{
 
@@ -33,7 +34,7 @@ class _MyAccountState extends State<MyAccout>
                       )
                   ),
                   Text(
-                    "  내 계과",
+                    "  My account".tr,
                    style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class _MyAccountState extends State<MyAccout>
                     Row(
 
                       children: [
-                        Text('농협은행',
+                        Text('NH bank'.tr,
                         style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -74,7 +75,7 @@ class _MyAccountState extends State<MyAccout>
                        style: ButtonStyle(
                        backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),),
-                         child: Text('주계좌',),)
+                         child: Text('main account'.tr),)
                     ],
                     ),
                         Row(
@@ -110,7 +111,7 @@ class _MyAccountState extends State<MyAccout>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '기업은행',
+                          'IBK bank'.tr,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -137,7 +138,7 @@ class _MyAccountState extends State<MyAccout>
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                           ),
-                          child: Text('주계과 설정'),
+                          child: Text('Set up as main account'.tr),
                         ),
                         SizedBox(width: 8),
                         TextButton(
@@ -148,7 +149,7 @@ class _MyAccountState extends State<MyAccout>
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                           ),
-                          child: Text('삭제'),
+                          child: Text('Delete'.tr),
                         ),
                       ],
                     ),

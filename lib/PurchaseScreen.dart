@@ -3,6 +3,7 @@ import 'package:app/model/GiftCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class PurchaseScreen extends StatefulWidget {
   const PurchaseScreen({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                         icon: Icon(Icons.arrow_back_ios_new)
                     ),
                     Text(
-                      "상품권 구매",
+                      "Buying GiftCard".tr,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -63,7 +64,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "즐겨찾기",
+                        "Bookmark".tr,
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16
@@ -128,7 +129,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "전체 상품권",
+                        "Entire GiftCard".tr,
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16
@@ -281,7 +282,7 @@ class _GiftCardItemsState extends State<GiftCardItems> {
                   );
                 },
                 child: Text(
-                  "구매",
+                  "Purchase".tr,
                   style: TextStyle(
                       color: Colors.black
                   ),

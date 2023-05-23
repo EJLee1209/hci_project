@@ -4,6 +4,7 @@ import 'package:app/SearchScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 import 'model/Place.dart';
 
@@ -74,7 +75,7 @@ class _FindScreenState extends State<FindScreen> {
                         size: 20,
                       ),
                       Text(
-                        "강원도 ${_selectedLocation}",
+                        "Gangwon-do ${_selectedLocation}".tr,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 13

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:async';
 
+import 'package:get/get.dart';
+
 enum PayType {
   zeroPay, // 제로페이
   giftCardPay, // 상품권 결제
@@ -36,13 +38,13 @@ class _PayScreenState extends State<PayScreen> {
     super.initState();
     switch(widget.payType) {
       case PayType.zeroPay:
-        _title = "제로페이 결제";
+        _title = "Paying by ZeroPay".tr;
         break;
       case PayType.giftCardPay:
-        _title = "상품권 결제";
+        _title = "Paying by GiftCard".tr;
         break;
       case PayType.giftCardPurchase:
-        _title = "상품권 구매";
+        _title = "Buying GiftCard".tr;
         break;
     }
   }
@@ -75,7 +77,7 @@ class _PayScreenState extends State<PayScreen> {
                             icon: Icon(Icons.arrow_back_ios_new)
                         ),
                         Text(
-                          "제로페이 결제",
+                          "Paying by ZeroPay".tr,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -88,7 +90,7 @@ class _PayScreenState extends State<PayScreen> {
                 Container(
                   margin: EdgeInsets.fromLTRB(18, 50, 18, 12),
                   child: Text(
-                    "생성된 QR코드를 점원에게 보여주세요",
+                    "Show the generated QR code to the clerk".tr,
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold
@@ -100,7 +102,7 @@ class _PayScreenState extends State<PayScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "남은시간 : ${_remainTime~/60}:${_remainTime%60}",
+                      "Remaining Time : ${_remainTime~/60}:${_remainTime%60}".tr,
                       style: TextStyle(
                           fontSize: 13,
                           color: Colors.black,
@@ -170,7 +172,7 @@ class _PayScreenState extends State<PayScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "상품권 구매",
+                          "Buying GiftCard".tr,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -227,7 +229,7 @@ class _PayScreenState extends State<PayScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Text(
-                            "확인",
+                            "Confirm".tr,
                           style: TextStyle(
                             fontSize: 18
                           ),
@@ -258,7 +260,7 @@ class _PayScreenState extends State<PayScreen> {
                             icon: Icon(Icons.arrow_back_ios_new)
                         ),
                         Text(
-                          "상품권 결제",
+                          "Paying by GiftCard".tr,
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -275,7 +277,7 @@ class _PayScreenState extends State<PayScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                          "상품권 사용 가능 금액 : ",
+                          "mount of GiftCard : ",
                         style: TextStyle(
                           fontSize: 16,
                         ),
@@ -299,7 +301,7 @@ class _PayScreenState extends State<PayScreen> {
                 Container(
                   margin: EdgeInsets.fromLTRB(18, 50, 18, 12),
                   child: Text(
-                    "생성된 QR코드를 점원에게 보여주세요",
+                    "Show the generated QR code to the clerk".tr,
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold
@@ -311,7 +313,7 @@ class _PayScreenState extends State<PayScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "남은시간 : ${_remainTime~/60}:${_remainTime%60}",
+                      "Remaining Time : ${_remainTime~/60}:${_remainTime%60}".tr,
                       style: TextStyle(
                           fontSize: 13,
                           color: Colors.black,
@@ -404,7 +406,7 @@ class _PayScreenState extends State<PayScreen> {
                     child: Column(
                       children: [
                         Text(
-                          "거래승인번호 6자리를 입력해주세요",
+                          "Please enter 6 digits pass".tr,
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold

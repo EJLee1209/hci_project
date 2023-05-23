@@ -1,6 +1,7 @@
 // 내 정보 my information
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyInfo extends StatefulWidget {
   const MyInfo({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _MyInfoState extends State<MyInfo>
                       )
                   ),
                   Text(
-                    "  내 정보",
+                    "  My info".tr,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -61,7 +62,7 @@ class _MyInfoState extends State<MyInfo>
                 children: [
                   Row(
                     children: [
-                      Text('   이름',
+                      Text('   Name'.tr,
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -69,7 +70,7 @@ class _MyInfoState extends State<MyInfo>
                       ),
                       ),
                       Spacer(),
-                      Text('이민호  ')
+                      Text('Lee Min Hoo '.tr)
                    ],
                   ),
                   Divider(
@@ -78,7 +79,7 @@ class _MyInfoState extends State<MyInfo>
                   ),
                   Row(
                     children: [
-                      Text('   이메일',
+                      Text('   Email'.tr,
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class _MyInfoState extends State<MyInfo>
                   ),
                   Row(
                     children: [
-                      Text('   천화번호',
+                      Text('   Phone num'.tr,
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -123,7 +124,7 @@ class _MyInfoState extends State<MyInfo>
              ),
               child: Row(
                 children: [
-                  Text('   회원정보 변경',
+                  Text('   Edit my info'.tr,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -157,7 +158,7 @@ class _MyInfoState extends State<MyInfo>
               ),
               child: Row(
                 children: [
-                  Text('   비밀번호 변경',
+                  Text('   Change Password'.tr,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -184,9 +185,9 @@ class _MyInfoState extends State<MyInfo>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(onPressed: (){}, child: Text('로그아웃')),
+                        TextButton(onPressed: (){}, child: Text('Log out'.tr)),
                         Text(' | '),
-                        TextButton(onPressed: (){}, child: Text('회원 탈퇴'))
+                        TextButton(onPressed: (){}, child: Text('Cancel my Membership'.tr))
                       ],
                     ),
                   )
