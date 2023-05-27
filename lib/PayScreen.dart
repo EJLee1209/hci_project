@@ -422,11 +422,11 @@ class _PayScreenState extends State<PayScreen> {
                     maxLines: 1,
                     maxLength: 6,
                     textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
                     onChanged: (String value) {
                       if(value == "123456") {
                         setState(() {
                           _passwordOk = true;
-
                           // 타이머 시작
                           _timer = Timer.periodic(Duration(seconds: 1), (timer) {
                             setState(() {

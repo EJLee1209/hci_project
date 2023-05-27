@@ -5,9 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-
-
-
 class MyScreen extends StatefulWidget {
   const MyScreen({Key? key}) : super(key: key);
 
@@ -16,7 +13,44 @@ class MyScreen extends StatefulWidget {
 }
 
 class _MyScreenState extends State<MyScreen> {
+  final List locale=[
+    {'name':'English','locale':Locale('en','US')},
+    {'name':'한국어','locale':Locale('ko','KR')}
+  ];
+  updatelanguage(Locale locale){
+    Get.back();
+    Get.updateLocale(locale);
+  }
 
+  builddialog(BuildContext context){
+    showDialog(context: context,
+        builder: (builder){
+          return AlertDialog(
+            title: Text('choose your language'),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:GestureDetector(
+                          onTap: (){
+                            updatelanguage(locale[index]['locale']);
+                          },
+
+                          child:Text(locale[index]['name'])),);
+                  },
+                  separatorBuilder: (context,index){
+                    return Divider(
+                      color: Colors.blue,
+                    );
+                  },
+                  itemCount: locale.length),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +177,31 @@ class _MyScreenState extends State<MyScreen> {
                 ),
               ],
             ),
+            CupertinoButton(
+                padding: EdgeInsets.fromLTRB(0, 20, 15, 20),
+                minSize: 0.0,
+
+                child: Row(
+                  children: [
+                    Text('Language'.tr,
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black
+                        )),
+                    const Spacer(),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                      color: Colors.black,
+                    )
+                  ],
+                ),
+                onPressed: () {
+                  builddialog(context);
+                }
+            ),
+
             Row(
               children: [
                 Expanded(
@@ -170,7 +229,6 @@ class _MyScreenState extends State<MyScreen> {
                 ),
               ],
             ),
-
 
             Padding(
                 padding: EdgeInsets.only(bottom: 10),

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'LocalString.dart';
+import 'Util/LocalString.dart';
 
 // 홈 화면 - Home Screen
 class HomeScreen extends StatelessWidget {
@@ -59,18 +59,22 @@ class HomeScreen extends StatelessWidget {
       children: [
         // 알림 아이콘
         Container(
-
           padding: EdgeInsets.fromLTRB(0, 70, 20, 0),
           child: Row(
             children: [
-
-                IconButton(onPressed:
-              (){
-              builddialog(context);
-              },
-                    icon: Icon(Icons.language)
-              ),
               Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: IconButton(
+                      onPressed: (){
+                        builddialog(context);
+                        },
+                      icon: Icon(
+                          Icons.language,
+                        size: 35,
+                      )
+                  ),
+                ),
               IconButton(
                 onPressed: (){
                   // Navigate to NotifyScreen
@@ -85,8 +89,6 @@ class HomeScreen extends StatelessWidget {
                   height: 35,
                 ),
               ),
-
-
             ],
           ),
         ),

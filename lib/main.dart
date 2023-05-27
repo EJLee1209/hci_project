@@ -2,7 +2,7 @@ import 'dart:math';
 
 
 import 'package:app/FindScreen.dart';
-import 'package:app/LocalString.dart';
+import 'package:app/Util/LocalString.dart';
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'MapScreen.dart';
@@ -10,7 +10,7 @@ import 'MoreScreen.dart';
 import 'MyScreen.dart';
 import 'Util/SalmonBottomBar.dart';
 import 'package:get/get.dart';
-import 'LocalString.dart';
+import 'Util/LocalString.dart';
 
 
 
@@ -75,7 +75,7 @@ class MainView extends State<MyApp> {
                 selectedColor: Color(0xFF171559),
               ),
 
-              /// Likes
+              /// Franchisee
               SalomonBottomBarItem(
                 icon: Icon(
                   Icons.location_on_outlined,
@@ -85,7 +85,7 @@ class MainView extends State<MyApp> {
                 selectedColor: Color(0xFF171559),
               ),
 
-              /// Search
+              /// My Page
               SalomonBottomBarItem(
                 icon: Icon(
                   Icons.person_outline_sharp,
@@ -95,7 +95,7 @@ class MainView extends State<MyApp> {
                 selectedColor: Color(0xFF171559),
               ),
 
-              /// Profile
+              /// More
               SalomonBottomBarItem(
                 icon: Icon(
                   Icons.more_horiz_outlined,
