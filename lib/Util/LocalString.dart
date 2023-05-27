@@ -56,18 +56,15 @@ class LocalString extends Translations{
           "Email":"Email",
           "Phone num":"Phone num",
           "Edit my info":"Edit my info",
-          "Change Password":"Change Password"
-
-
-
-
+          "Change Password":"Change Password",
+          "Language" : "Language"
 
         },
         'ko_KR':{
           'Home':'홈',
           'Pay' :'결제',
           'Charge':'충전',
-          'History':'녀역',
+          'History':'내역',
           'Gift/Coupon':'선물/쿠폰',
           'Intro sercive':'서비스 소개',
           'Franchisee':'가맹점',
@@ -105,19 +102,17 @@ class LocalString extends Translations{
           "My info":"내 정보",
           "My page":"마이 페이지",
           "NH bank":"농협은행",
-          "main account":"주계과",
+          "main account":"주계좌",
           "IBK bank":"기업은행",
           "Set up as main account":"주계좌 설정",
           "Delete":"삭제",
           "Name":"이름",
           "Lee Min Hoo":"이민호",
           "Email":"이메일",
-          "Phone num":"천화번호",
+          "Phone num":"전화번호",
           "Edit my info":"회원정보 변경",
-          "Change Password":"비밀번호 변경"
-
-
+          "Change Password":"비밀번호 변경",
+          "Language" : "언어"
         }
       };
-
 }

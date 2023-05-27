@@ -143,7 +143,7 @@ class PlaceDetailScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 8),
                     child: Text(
-                      "상제정보",
+                      "상세정보",
                       style: TextStyle(
                           fontSize: 18,
                       ),
